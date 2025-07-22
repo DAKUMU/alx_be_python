@@ -1,33 +1,26 @@
-# control-flow/daily_reminder.py
+# daily_reminder.py
 
-def main():
-    task = input("Enter your task: ").strip()
-    priority = input("Priority (high/medium/low): ").strip().lower()
-    time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
+# Prompt the user for input
+task = input("Enter your task: ").strip()
+priority = input("Priority (high/medium/low): ").strip().lower()
+time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 
-    match priority:
-        case "high":
-            reminder = f"Reminder: '{task}' is a high priority task"
-        case "medium":
-            reminder = f"Reminder: '{task}' is a medium priority task"
-        case "low":
-            reminder = f"Note: '{task}' is a low priority task"
-        case _:
-            print("Invalid priority level entered.")
-            return
+# Use match-case for priority
+match priority:
+    case "high":
+        message = f"'{task}' is a high priority task"
+    case "medium":
+        message = f"'{task}' is a medium priority task"
+    case "low":
+        message = f"'{task}' is a low priority task"
+    case _:
+        message = f"'{task}' has an unknown priority level"
 
-    if time_bound == "yes":
-        reminder += " that requires immediate attention today!"
-    elif time_bound == "no":
-        if priority == "low":
-            reminder += ". Consider completing it when you have free time."
-        else:
-            reminder += "."
-    else:
-        print("Invalid input for time-bound question.")
-        return
+# Check if task is time-sensitive
+if time_bound == "yes":
+    message += " that requires immediate attention today!"
+else:
+    message += ". Consider completing it when you have free time."
 
-    print(reminder)
-
-if __name__ == "__main__":
-    main()
+# Print the reminder
+print(f"\nReminder: {message}")
