@@ -6,23 +6,21 @@ def display_menu():
     print("4. Exit")
 
 def main():
-    shopping_list = []  # ensure this is a list
-
+    shopping_list = []
     while True:
-        display_menu()  # call display_menu
-
+        display_menu()
         try:
-            choice = int(input("Enter your choice: "))  # choice as a number
+            choice = int(input("Enter your choice: "))
         except ValueError:
             print("Invalid choice. Please enter a number.")
             continue
 
         if choice == 1:
-            item = input("Enter item to add: ")
+            item = input("Enter the item to add: ")
             shopping_list.append(item)
             print(f"'{item}' has been added to your shopping list.")
         elif choice == 2:
-            item = input("Enter item to remove: ")
+            item = input("Enter the item to remove: ")
             if item in shopping_list:
                 shopping_list.remove(item)
                 print(f"'{item}' has been removed from your shopping list.")
@@ -31,8 +29,8 @@ def main():
         elif choice == 3:
             if shopping_list:
                 print("Your shopping list:")
-                for i, item in enumerate(shopping_list, start=1):
-                    print(f"{i}. {item}")
+                for idx, item in enumerate(shopping_list, 1):
+                    print(f"{idx}. {item}")
             else:
                 print("Your shopping list is empty.")
         elif choice == 4:
